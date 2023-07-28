@@ -1,11 +1,20 @@
 import { useState } from "react";
 
+function highlightText(key: number, text = ""): JSX.Element {
+  return (
+    <span className="selected" key={key}>
+      {text}
+    </span>
+  );
+}
+
 const Regex = () => {
   const originalStr = "07542 456179";
   const [text, setText] = useState<(JSX.Element | string)[]>([originalStr]);
 
   function handleRegex(e: React.ChangeEvent<HTMLInputElement>) {
     const input = e.target.value;
+
     if (!input) {
       setText([originalStr]);
       return;
@@ -19,23 +28,15 @@ const Regex = () => {
 
       matches.forEach((match) => {
         if (match.input && typeof match.index !== "undefined") {
-          switch (match[0].length) {
-            case 0:
-              output.push(match.input.slice(lastIndex, match.index));
-              output.push(<span className="selected" key={match.index}></span>);
-              lastIndex = match.index;
-              break;
+          output.push(match.input.slice(lastIndex, match.index));
 
-            default:
-              output.push(match.input.slice(lastIndex, match.index));
-              output.push(
-                <span className="selected" key={match.index}>
-                  {match[0]}
-                </span>
-              );
-
-              lastIndex = match.index + match[0].length;
+          if (match[0].length === 0) {
+            output.push(highlightText(match.index));
+          } else {
+            output.push(highlightText(match.index, match[0]));
           }
+
+          lastIndex = match.index + match[0].length;
         }
       });
 
