@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { RegexProps } from "../types";
 
 function highlightText(key: number, text = ""): JSX.Element {
   return (
@@ -8,42 +9,35 @@ function highlightText(key: number, text = ""): JSX.Element {
   );
 }
 
-const Regex = () => {
-  const originalStr = "07542 456179";
-  const [text, setText] = useState<(JSX.Element | string)[]>([originalStr]);
+const Regex = ({ initialText }: RegexProps) => {
+  const [text, setText] = useState<(JSX.Element | string)[]>([initialText]);
 
   function handleRegex(e: React.ChangeEvent<HTMLInputElement>) {
     const input = e.target.value;
 
     if (!input) {
-      setText([originalStr]);
+      setText([initialText]);
       return;
     }
 
     try {
       const regex = new RegExp(input, "g");
-      const matches = [...originalStr.matchAll(regex)];
+      const matches = [...initialText.matchAll(regex)];
       const output: (JSX.Element | string)[] = [];
       let lastIndex = 0;
 
       matches.forEach((match) => {
-        if (match.input && typeof match.index !== "undefined") {
+        if (match.input && typeof match.index === "number") {
           output.push(match.input.slice(lastIndex, match.index));
-
-          if (match[0].length === 0) {
-            output.push(highlightText(match.index));
-          } else {
-            output.push(highlightText(match.index, match[0]));
-          }
-
+          output.push(highlightText(match.index, match[0]));
           lastIndex = match.index + match[0].length;
         }
       });
 
-      output.push(originalStr.slice(lastIndex));
+      output.push(initialText.slice(lastIndex));
       setText(output);
     } catch {
-      setText([originalStr]);
+      setText([initialText]);
     }
   }
 
