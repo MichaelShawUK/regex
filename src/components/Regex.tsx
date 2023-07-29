@@ -42,11 +42,15 @@ const Regex = ({ initialText }: RegexProps) => {
   }
 
   return (
-    <>
+    <div className="regex">
       <h1>Regex</h1>
-      <input type="text" onChange={(e) => handleRegex(e)}></input>
-      <p>{text}</p>
-    </>
+      <div className="input-container">
+        <span className="input-wrapper">/</span>
+        <input type="text" onChange={(e) => handleRegex(e)}></input>
+        <span className="input-wrapper">/g</span>
+      </div>
+      <p className="text">{text}</p>
+    </div>
   );
 };
 

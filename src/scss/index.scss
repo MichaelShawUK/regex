@@ -4,8 +4,33 @@ h1 {
   color: $secondary;
 }
 
-ul {
-  li {
-    color: orange
+.regex {
+  input {
+    font-size: 1.5rem;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 0 0.5rem;
   }
+
+  .input-wrapper {
+    font-size: 1.5rem;
+  }
+  
+  .input-container {
+    background-color: #555;
+    padding: 2rem;
+  }
+
+  .selected {
+    background-color: rgb(104, 193, 228);
+    color: black;
+    padding: 0 2px;
+    margin: 0 1px;
+    border-radius: 2px;
+  }
+
+  .text {
+    font-size: 1.5rem;
+  }
+  
 }

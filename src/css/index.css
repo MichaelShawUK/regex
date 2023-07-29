@@ -2,6 +2,26 @@ h1 {
   color: lime;
 }
 
-ul li {
-  color: orange;
+.regex input {
+  font-size: 1.5rem;
+  padding: 1rem;
+  border-radius: 5px;
+  margin: 0 0.5rem;
+}
+.regex .input-wrapper {
+  font-size: 1.5rem;
+}
+.regex .input-container {
+  background-color: #555;
+  padding: 2rem;
+}
+.regex .selected {
+  background-color: rgb(104, 193, 228);
+  color: black;
+  padding: 0 2px;
+  margin: 0 1px;
+  border-radius: 2px;
+}
+.regex .text {
+  font-size: 1.5rem;
 }
