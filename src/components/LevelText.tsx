@@ -1,4 +1,5 @@
 import dedent from "dedent";
+import highlightMatches from "../utils/highlightMatches";
 
 const matches = [
   "07123456789",
@@ -15,47 +16,10 @@ const text = dedent`07123 45678
                     071234567890
                     07123 45678
                     +44712345678
-                    SW@P`;
+                    SW@P
+                    123456`;
 
-let output = text;
-
-const matchIndexes = new Map();
-
-for (const match of matches) {
-  const startIndex = output.search("SW@P");
-  matchIndexes.set(match, [startIndex, startIndex + match.length]);
-  output = output.replace("SW@P", match);
-}
-
-console.log(output);
-console.log(matchIndexes);
-
-const jsx: (string | JSX.Element)[] = [];
-const positions = [...matchIndexes.values()];
-let currentPosition = 0;
-for (const position of positions) {
-  if (position[0] > currentPosition) {
-    jsx.push(output.slice(currentPosition, position[0]));
-    currentPosition = position[0];
-  }
-  if (currentPosition === position[0]) {
-    jsx.push(<span className="match">{output.slice(...position)}</span>);
-    currentPosition = position[1];
-  }
-}
-
-const lastPosition = [...positions.slice(-1)][0][1];
-console.log(lastPosition);
-
-jsx.push(output.slice(lastPosition));
-
-// const jsxUpdated = jsx.map((ele) => {
-//   if (typeof ele === "string") {
-//     console.log(str);
-//   }
-// });
-
-console.log(jsx);
+const jsx = highlightMatches(text, matches);
 
 const LevelText = () => {
   return (
