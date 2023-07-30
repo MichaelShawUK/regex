@@ -25,3 +25,11 @@ h1 {
 .regex .text {
   font-size: 1.5rem;
 }
+
+.match {
+  background-color: lime;
+  color: black;
+  padding: 0 2px;
+  margin: 0 1px;
+  border-radius: 2px;
+}

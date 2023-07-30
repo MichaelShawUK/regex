@@ -1,4 +1,6 @@
-function insertIntoText(text: string, matches: string[]) {
+import dedent from "dedent";
+
+function insertIntoText(text, matches) {
   checkMatches(text, matches);
   for (const match of matches) {
     text = text.replace("SW@P", match);
@@ -6,7 +8,7 @@ function insertIntoText(text: string, matches: string[]) {
   return text;
 }
 
-function checkMatches(text: string, matches: string[]) {
+function checkMatches(text, matches) {
   const placeholders = text.match(/SW@P/g)?.length;
   const matchCount = matches.length;
   if (placeholders !== matchCount) {
@@ -28,17 +30,25 @@ const data = [
       "+44 7123 456789",
     ],
     get text() {
-      const text = `SW@P
-SW@P
-SW@P
-SW@P
-0712345678
-071234567890
-07123 45678
-+44712345678`;
+      const text = dedent`SW@P
+                          SW@P
+                          SW@P
+                          SW@P
+                          0712345678
+                          071234567890
+                          07123 45678
+                          +44712345678`;
       return insertIntoText(text, this.matches);
     },
   },
 ];
 
-console.log(data[0].text);
+console.log(data[0].text.split(/\n/g));
+
+const jsx = [];
+
+for (const line of data[0].text.split(/\n/g)) {
+  jsx.push(line, <br></br>);
+}
+
+console.log(jsx);

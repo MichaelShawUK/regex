@@ -1,4 +1,5 @@
 import Regex from "./components/Regex";
+import LevelText from "./components/LevelText";
 import "./css/index.css";
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
   return (
     <>
       <Regex initialText={text} />
+      <LevelText />
     </>
   );
 }
