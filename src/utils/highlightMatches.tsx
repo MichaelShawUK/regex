@@ -7,10 +7,14 @@ export default function highlightMatches(
   const jsx: (string | JSX.Element)[] = [];
   let currentIndex = 0;
 
-  matchPositions.forEach((match) => {
+  matchPositions.forEach((match, index) => {
     const head = text.slice(currentIndex, match[0]);
     if (head) jsx.push(head);
-    jsx.push(<span className="match">{text.slice(...match)}</span>);
+    jsx.push(
+      <span className="match" key={index}>
+        {text.slice(...match)}
+      </span>
+    );
     currentIndex = match[1];
   });
 
