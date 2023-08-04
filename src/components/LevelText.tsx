@@ -15,11 +15,10 @@ const text = dedent`07123 45678
                     071234567890
                     07123 45678
                     +44712345678
-                    SW@P
+                    SW@P|SW@P
                     asdf
-                    abc
-                    
-                    SW@P`;
+                    abc def z
+                    `;
 
 const jsx = highlightMatches(text, matches);
 

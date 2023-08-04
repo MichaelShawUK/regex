@@ -16,16 +16,21 @@ export default function highlightMatches(
   const positions = [...matchIndexes.values()];
   let currentPosition = 0;
 
-  for (const position of positions) {
+  // for (const position of positions) {
+  positions.forEach((position, index) => {
     if (position[0] > currentPosition) {
       jsx.push(text.slice(currentPosition, position[0]));
       currentPosition = position[0];
     }
     if (currentPosition === position[0]) {
-      jsx.push(<span className="match">{text.slice(...position)}</span>);
+      jsx.push(
+        <span key={index} className="match">
+          {text.slice(...position)}
+        </span>
+      );
       currentPosition = position[1];
     }
-  }
+  });
 
   const lastPosition = [...positions.slice(-1)][0][1];
   jsx.push(text.slice(lastPosition));
