@@ -23,6 +23,13 @@ const Regex = ({ initialText }: RegexProps) => {
     try {
       const regex = new RegExp(input, "g");
       const matches = [...initialText.matchAll(regex)];
+      console.table(
+        matches.map((match) => {
+          if (typeof match.index === "number") {
+            return [match.index, match.index + match[0].length];
+          }
+        })
+      );
       const output: (JSX.Element | string)[] = [];
       let lastIndex = 0;
 
