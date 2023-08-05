@@ -42,3 +42,19 @@ h1 {
     margin: 0 1px;
     border-radius: 2px;
 }
+
+.invalid {
+  background-color: red;
+    color: white;
+    padding: 0 2px;
+    margin: 0 1px;
+    border-radius: 2px;
+}
+
+.selected {
+  background-color: paleturquoise;
+    color: black;
+    padding: 0 2px;
+    margin: 0 1px;
+    border-radius: 2px;
+}
