@@ -1,3 +1,4 @@
+import addLineBreaks from "./addLinesBreaks";
 import isWithin from "./isWithin";
 
 export default function insertSpanTags(
@@ -85,7 +86,9 @@ export default function insertSpanTags(
 
   if (eolAnchor) jsx.push(eolAnchor);
 
-  console.log(jsx);
+  const formatJsx = addLineBreaks(jsx);
 
-  return jsx;
+  // addLineBreaks(["hi\n", "the\nre"]);
+
+  return formatJsx;
 }
