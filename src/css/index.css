@@ -24,28 +24,34 @@ h1 {
 }
 .regex .text {
   font-size: 1.5rem;
+  font-size: 2rem;
+}
+
+.level-text {
+  font-size: 2rem;
+  line-height: 1.5;
+}
+
+.highlight {
+  padding: 0 2px;
+  margin: 0 1px;
+  border-radius: 2px;
 }
 
 .match {
-  background-color: lime;
+  background-color: rgb(135, 199, 135);
   color: black;
-  padding: 0 2px;
-  margin: 0 1px;
-  border-radius: 2px;
+  outline: 2px solid green;
 }
 
 .invalid {
-  background-color: red;
-  color: white;
-  padding: 0 2px;
-  margin: 0 1px;
-  border-radius: 2px;
+  background-color: rgb(206, 144, 144);
+  color: black;
+  outline: 2px solid red;
 }
 
 .selected {
-  background-color: paleturquoise;
+  background-color: rgb(124, 154, 218);
   color: black;
-  padding: 0 2px;
-  margin: 0 1px;
-  border-radius: 2px;
+  outline: 2px solid blue;
 }

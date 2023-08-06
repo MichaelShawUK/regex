@@ -11,7 +11,7 @@ export default function highlightMatches(
     const head = text.slice(currentIndex, match[0]);
     if (head) jsx.push(head);
     jsx.push(
-      <span className="match" key={index}>
+      <span className="highlight match" key={index}>
         {text.slice(...match)}
       </span>
     );

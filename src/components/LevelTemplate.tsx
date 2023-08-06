@@ -45,8 +45,8 @@ const LevelTemplate = () => {
     try {
       const regex = new RegExp(input, "g");
       const matches = [...outputText.matchAll(regex)];
-      console.log(matches);
       const regexPositions = new Map<number[], string>();
+
       matches.forEach((match) => {
         if (typeof match.index !== "number") return;
         regexPositions.set(
