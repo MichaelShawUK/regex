@@ -13,7 +13,7 @@ export default function StrNewLineToBr(str: string): (string | JSX.Element)[] {
     const head = newLine.input?.slice(currentIndex, newLine.index);
     if (head) jsx.push(head);
     jsx.push(<br></br>);
-    if (newLine.index) currentIndex = newLine.index + 1;
+    if (typeof newLine.index === "number") currentIndex = newLine.index + 1;
   });
 
   const tail = str.slice(currentIndex);
