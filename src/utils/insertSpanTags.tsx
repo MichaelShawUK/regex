@@ -1,3 +1,4 @@
+import StrNewLineToBr from "./StrNewLineToBr";
 import addLineBreaks from "./addLinesBreaks";
 import isWithin from "./isWithin";
 
@@ -85,6 +86,14 @@ export default function insertSpanTags(
   }
 
   if (eolAnchor) jsx.push(eolAnchor);
+
+  console.log(jsx);
+
+  addLineBreaks(jsx);
+
+  // console.log(StrNewLineToBr("\nhello\nthere\n"));
+
+  return jsx;
 
   const formatJsx = addLineBreaks(jsx);
 
