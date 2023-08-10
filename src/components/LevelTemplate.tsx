@@ -5,6 +5,7 @@ import insertMatches from "../utils/insertMatches";
 import getMatchPositions from "../utils/getMatchPositions";
 import insertSpanTags from "../utils/insertSpanTags";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const matches = [
   "07123456789",
@@ -64,7 +65,7 @@ const LevelTemplate = () => {
   return (
     <div className="level-template">
       <input type="text" onChange={(e) => handleRegex(e)}></input>
-      <LevelText>{jsx}</LevelText>
+      <LevelText key={uuidv4()}>{jsx}</LevelText>
     </div>
   );
 };

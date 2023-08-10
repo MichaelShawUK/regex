@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 function insertLineBreaks(str: string): (JSX.Element | string)[] {
   let currentIndex = 0;
   const output = [];
@@ -5,7 +7,7 @@ function insertLineBreaks(str: string): (JSX.Element | string)[] {
   for (const newLine of [...str.matchAll(/\n/g)]) {
     const line = newLine.input?.slice(currentIndex, newLine.index);
     if (line) output.push(line.trim());
-    output.push(<br key={Math.random()}></br>);
+    output.push(<br key={uuidv4()}></br>);
     if (newLine.index) currentIndex = newLine.index + 1;
   }
 

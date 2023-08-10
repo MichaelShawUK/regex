@@ -1,40 +1,40 @@
 @import "variables";
 
-h1 {
-  color: $secondary;
-}
+// h1 {
+//   color: $secondary;
+// }
 
-.regex {
-  input {
-    font-size: 1.5rem;
-    padding: 1rem;
-    border-radius: 5px;
-    margin: 0 0.5rem;
-  }
+// .regex {
+//   input {
+//     font-size: 1.5rem;
+//     padding: 1rem;
+//     border-radius: 5px;
+//     margin: 0 0.5rem;
+//   }
 
-  .input-wrapper {
-    font-size: 1.5rem;
-  }
+//   .input-wrapper {
+//     font-size: 1.5rem;
+//   }
   
-  .input-container {
-    background-color: #555;
-    padding: 2rem;
-  }
+//   .input-container {
+//     background-color: #555;
+//     padding: 2rem;
+//   }
 
-  .selected {
-    background-color: rgb(104, 193, 228);
-    color: black;
-    padding: 0 2px;
-    margin: 0 1px;
-    border-radius: 2px;
-  }
+//   .selected {
+//     background-color: rgb(104, 193, 228);
+//     color: black;
+//     padding: 0 2px;
+//     margin: 0 1px;
+//     border-radius: 2px;
+//   }
 
-  .text {
-    font-size: 1.5rem;
-    font-size: 2rem;
-  }
+//   .text {
+//     font-size: 1.5rem;
+//     font-size: 2rem;
+//   }
   
-}
+// }
 
 .level-text {
   font-size: 2rem;
@@ -63,4 +63,10 @@ h1 {
   background-color: rgb(124, 154, 218);
     color: black;
     outline: 2px solid blue;
+}
+
+.anchor {
+  background-color: rgb(206, 202, 144);
+    color: black;
+    outline: 2px solid yellow;
 }

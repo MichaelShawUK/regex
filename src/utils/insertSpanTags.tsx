@@ -17,7 +17,7 @@ export default function insertSpanTags(
   let eolAnchor: JSX.Element | null = null;
 
   if (lastRegex[0][0] === text.length && lastRegex[0][1] === text.length) {
-    eolAnchor = <span className="highlight selected"></span>;
+    eolAnchor = <span className="highlight anchor"></span>;
   }
 
   while (currentIndex < text.length) {
@@ -35,7 +35,7 @@ export default function insertSpanTags(
     }
 
     if (currentIndex === nextRegex[0][0] && currentIndex === nextRegex[0][1]) {
-      jsx.push(<span className="highlight selected"></span>);
+      jsx.push(<span className="highlight anchor"></span>);
     }
 
     if (currentIndex >= nextMatch[0][1]) nextMatch = matches.shift();

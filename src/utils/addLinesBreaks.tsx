@@ -1,4 +1,5 @@
 import StrNewLineToBr from "./StrNewLineToBr";
+import { v4 as uuidv4 } from "uuid";
 
 export default function addLineBreaks(
   jsx: (string | JSX.Element)[]
@@ -12,7 +13,9 @@ export default function addLineBreaks(
       if (element.props.children) {
         const content = StrNewLineToBr(element.props.children);
         formatJsx.push(
-          <span className={element.props.className}>{content}</span>
+          <span className={element.props.className} key={uuidv4()}>
+            {content}
+          </span>
         );
       } else formatJsx.push(element);
     }
