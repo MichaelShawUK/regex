@@ -15,16 +15,18 @@ const matches = [
 ];
 
 const text = dedent`07123 45678
-                    abcSW@Pabc
+                    abcSW@P
                     0712345678
-                    1.23SW@P4567
-                    071234567890
+                    1.23SW@P
+                    071234567890777777777777777777777788888888888SW@P55555
                     07123 45678
+                    0712345678C
                     +44712345678
                     SW@P
                     asdf
                     abc def z
-                    SW@P
+                    
+                    ghi
                     `;
 
 const outputText = insertMatches(text, matches);
