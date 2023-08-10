@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 export default function StrNewLineToBr(str: string): (string | JSX.Element)[] {
   const jsx: (string | JSX.Element)[] = [];
   const newLines = [...str.matchAll(/\n/g)];
@@ -12,7 +14,7 @@ export default function StrNewLineToBr(str: string): (string | JSX.Element)[] {
   newLines.forEach((newLine) => {
     const head = newLine.input?.slice(currentIndex, newLine.index);
     if (head) jsx.push(head);
-    jsx.push(<br></br>);
+    jsx.push(<br key={uuidv4()}></br>);
     if (typeof newLine.index === "number") currentIndex = newLine.index + 1;
   });
 

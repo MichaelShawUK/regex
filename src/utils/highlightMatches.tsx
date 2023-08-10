@@ -1,4 +1,5 @@
 import insertLineBreaks from "./insertLineBreaks";
+import { v4 as uuidv4 } from "uuid";
 
 export default function highlightMatches(
   text: string,
@@ -7,11 +8,11 @@ export default function highlightMatches(
   const jsx: (string | JSX.Element)[] = [];
   let currentIndex = 0;
 
-  matchPositions.forEach((match, index) => {
+  matchPositions.forEach((match) => {
     const head = text.slice(currentIndex, match[0]);
     if (head) jsx.push(head);
     jsx.push(
-      <span className="highlight match" key={index}>
+      <span className="highlight match" key={uuidv4()}>
         {text.slice(...match)}
       </span>
     );

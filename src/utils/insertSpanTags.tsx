@@ -1,5 +1,6 @@
 import addLineBreaks from "./addLinesBreaks";
 import isWithin from "./isWithin";
+import { v4 as uuidv4 } from "uuid";
 
 export default function insertSpanTags(
   text: string,
@@ -17,7 +18,7 @@ export default function insertSpanTags(
   let eolAnchor: JSX.Element | null = null;
 
   if (lastRegex[0][0] === text.length && lastRegex[0][1] === text.length) {
-    eolAnchor = <span className="highlight anchor"></span>;
+    eolAnchor = <span className="highlight anchor" key={uuidv4()}></span>;
   }
 
   while (currentIndex < text.length) {
@@ -35,7 +36,7 @@ export default function insertSpanTags(
     }
 
     if (currentIndex === nextRegex[0][0] && currentIndex === nextRegex[0][1]) {
-      jsx.push(<span className="highlight anchor"></span>);
+      jsx.push(<span className="highlight anchor" key={uuidv4()}></span>);
     }
 
     if (currentIndex >= nextMatch[0][1]) nextMatch = matches.shift();
@@ -65,21 +66,33 @@ export default function insertSpanTags(
         currentIndex,
         Math.min(nextMatch[0][1], nextRegex[0][1])
       );
-      jsx.push(<span className="highlight selected">{selectedText}</span>);
+      jsx.push(
+        <span className="highlight selected" key={uuidv4()}>
+          {selectedText}
+        </span>
+      );
       currentIndex += selectedText.length;
     } else if (isWithin(currentIndex, nextMatch[0])) {
       const matchText = text.slice(
         currentIndex,
         Math.min(nextRegex[0][0], nextMatch[0][1])
       );
-      jsx.push(<span className="highlight match">{matchText}</span>);
+      jsx.push(
+        <span className="highlight match" key={uuidv4()}>
+          {matchText}
+        </span>
+      );
       currentIndex += matchText.length;
     } else if (isWithin(currentIndex, nextRegex[0])) {
       const invalidText = text.slice(
         currentIndex,
         Math.min(nextRegex[0][1], nextMatch[0][0])
       );
-      jsx.push(<span className="highlight invalid">{invalidText}</span>);
+      jsx.push(
+        <span className="highlight invalid" key={uuidv4()}>
+          {invalidText}
+        </span>
+      );
       currentIndex += invalidText.length;
     }
   }
