@@ -41,6 +41,30 @@ const data = [
       return insertMatches(text, this.matches);
     },
   },
+  {
+    type: "find",
+    instructions: "Find all products IDs in this order",
+    matches: ["sku235av", "sku190wa", "sku883fl"],
+    get text() {
+      const text = dedent`Order Summary:
+                          Name: ReactJS
+                          id: SW@P
+                          Quantity: 1
+                          Price: £49.99
+
+                          Name: CSS3
+                          id: SW@P
+                          Quanity: 2
+                          Price: £27.99
+
+                          Name: HTML5
+                          id: SW@P
+                          Quanity: 5
+                          Price: £10.00`;
+
+      return insertMatches(text, this.matches);
+    },
+  },
 ];
 
 export default data;

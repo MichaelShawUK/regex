@@ -10,20 +10,24 @@ function App() {
   return (
     <>
       <LevelTemplate data={data[level]} />
-      <button
-        onClick={() => {
-          setLevel((l) => Math.max(--l, 0));
-        }}
-      >
-        Previous Level
-      </button>
-      <button
-        onClick={() => {
-          setLevel((l) => Math.min(++l, data.length - 1));
-        }}
-      >
-        Next Level
-      </button>
+      {level > 0 && (
+        <button
+          onClick={() => {
+            setLevel((l) => Math.max(--l, 0));
+          }}
+        >
+          Previous Level
+        </button>
+      )}
+      {level < data.length - 1 && (
+        <button
+          onClick={() => {
+            setLevel((l) => Math.min(++l, data.length - 1));
+          }}
+        >
+          Next Level
+        </button>
+      )}
     </>
   );
 }

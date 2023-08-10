@@ -3,7 +3,7 @@ import highlightMatches from "../utils/highlightMatches";
 import insertMatches from "../utils/insertMatches";
 import getMatchPositions from "../utils/getMatchPositions";
 import insertSpanTags from "../utils/insertSpanTags";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { LevelData } from "../types";
 
@@ -14,9 +14,11 @@ const LevelTemplate = ({ data }: { data: LevelData }) => {
   const initialJsx = highlightMatches(outputText, matchIndexes);
 
   const [jsx, setJsx] = useState(initialJsx);
+  const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setJsx(initialJsx);
+    if (ref.current) ref.current.value = "";
   }, [data]);
 
   function handleRegex(e: React.ChangeEvent<HTMLInputElement>) {
@@ -49,7 +51,7 @@ const LevelTemplate = ({ data }: { data: LevelData }) => {
   return (
     <div className="level-template">
       <div className="instructions">{data.instructions}</div>
-      <input type="text" onChange={(e) => handleRegex(e)}></input>
+      <input type="text" onChange={(e) => handleRegex(e)} ref={ref}></input>
       <LevelText key={uuidv4()}>{jsx}</LevelText>
     </div>
   );
