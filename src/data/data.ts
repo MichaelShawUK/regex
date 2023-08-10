@@ -14,13 +14,14 @@ const data = [
     ],
     get text() {
       const text = dedent`SW@P
-                          SW@P
-                          SW@P
-                          SW@P
+                          08123456789
                           0712345678
                           071234567890
+                          SW@P
                           07123 45678
-                          +44712345678`;
+                          SW@P
+                          +44712345678
+                          SW@P`;
 
       return insertMatches(text, this.matches);
     },
@@ -33,10 +34,8 @@ const data = [
       const text = dedent`color: red;
                           background-color: SW@P;
                           border: 2px solid SW@P;
-                          &hover: {
-                            color: blue;
-                            background-color: SW@P;
-                          }`;
+                          background: linear-gradient(white, SW@P);
+                          background-image: url("../images/dark#bg1")`;
 
       return insertMatches(text, this.matches);
     },

@@ -1,4 +1,4 @@
-import insertLineBreaks from "./insertLineBreaks";
+import addLineBreaks from "./addLinesBreaks";
 import { v4 as uuidv4 } from "uuid";
 
 export default function highlightMatches(
@@ -22,9 +22,7 @@ export default function highlightMatches(
   const tail = text.slice(currentIndex);
   if (tail) jsx.push(tail);
 
-  const formatJsx = jsx.map((ele) =>
-    typeof ele === "string" ? insertLineBreaks(ele) : ele
-  );
+  const formatJsx = addLineBreaks(jsx);
 
   return formatJsx.flat();
 }

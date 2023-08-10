@@ -1,7 +1,7 @@
-const LevelText = (props: { children: (string | JSX.Element)[] }) => {
+const LevelText = ({ children }: { children: (string | JSX.Element)[] }) => {
   return (
     <div className="level-text">
-      <p>{props.children}</p>
+      <p>{children}</p>
     </div>
   );
 };
