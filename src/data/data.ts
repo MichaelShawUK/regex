@@ -1,22 +1,5 @@
 import dedent from "dedent";
-
-function insertIntoText(text, matches) {
-  checkMatches(text, matches);
-  for (const match of matches) {
-    text = text.replace("SW@P", match);
-  }
-  return text;
-}
-
-function checkMatches(text, matches) {
-  const placeholders = text.match(/SW@P/g)?.length;
-  const matchCount = matches.length;
-  if (placeholders !== matchCount) {
-    throw new Error(
-      `Expected ${placeholders} strings to match but received ${matchCount}.`
-    );
-  }
-}
+import insertMatches from "../utils/insertMatches";
 
 const data = [
   {
@@ -38,17 +21,26 @@ const data = [
                           071234567890
                           07123 45678
                           +44712345678`;
-      return insertIntoText(text, this.matches);
+
+      return insertMatches(text, this.matches);
+    },
+  },
+  {
+    type: "find",
+    instructions: "Find all hex colour values",
+    matches: ["#efefef", "#ff0", "#9a4c12"],
+    get text() {
+      const text = dedent`color: red;
+                          background-color: SW@P;
+                          border: 2px solid SW@P;
+                          &hover: {
+                            color: blue;
+                            background-color: SW@P;
+                          }`;
+
+      return insertMatches(text, this.matches);
     },
   },
 ];
 
-console.log(data[0].text.split(/\n/g));
-
-const jsx = [];
-
-for (const line of data[0].text.split(/\n/g)) {
-  jsx.push(line, <br></br>);
-}
-
-console.log(jsx);
+export default data;

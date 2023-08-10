@@ -2,6 +2,12 @@
   display: flex;
   flex-direction: column;
 }
+.level-template .instructions {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-size: 1.2rem;
+}
 .level-template input {
   max-width: 300px;
   margin: 0 auto;
