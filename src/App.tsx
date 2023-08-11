@@ -5,7 +5,6 @@ import data from "./data/data";
 
 function App() {
   const [level, setLevel] = useState(0);
-  console.log(level);
 
   return (
     <>

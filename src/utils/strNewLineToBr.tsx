@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-export default function StrNewLineToBr(str: string): (string | JSX.Element)[] {
+export default function strNewLineToBr(str: string): (string | JSX.Element)[] {
   const jsx: (string | JSX.Element)[] = [];
   const newLines = [...str.matchAll(/\n/g)];
 
