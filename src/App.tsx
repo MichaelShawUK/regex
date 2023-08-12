@@ -19,7 +19,7 @@ function App() {
 
   return (
     <>
-      <LevelTemplate levelData={levelData[level]} />
+      <LevelTemplate key={level} levelData={levelData[level]} />
       {isPrevLevel && (
         <button onClick={prevClickHandler}>Previous Level</button>
       )}
