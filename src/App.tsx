@@ -1,14 +1,14 @@
 import "./css/index.css";
 import LevelTemplate from "./components/LevelTemplate";
 import { useState } from "react";
-import data from "./data/data";
+import levelData from "./data/levelData";
 
 function App() {
   const [level, setLevel] = useState(0);
 
   return (
     <>
-      <LevelTemplate data={data[level]} />
+      <LevelTemplate levelData={levelData[level]} />
       {level > 0 && (
         <button
           onClick={() => {
@@ -18,10 +18,10 @@ function App() {
           Previous Level
         </button>
       )}
-      {level < data.length - 1 && (
+      {level < levelData.length - 1 && (
         <button
           onClick={() => {
-            setLevel((l) => Math.min(++l, data.length - 1));
+            setLevel((l) => Math.min(++l, levelData.length - 1));
           }}
         >
           Next Level
