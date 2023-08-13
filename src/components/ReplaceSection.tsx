@@ -5,6 +5,13 @@ import { useState } from "react";
 const ReplaceSection = (props: ReplaceSectionProps) => {
   const [replaceValue, setReplaceValue] = useState("");
 
+  function getCurrentOutput() {
+    if (props.enteredRegex.toString() === "/(?:)/g") {
+      return strNewLineToBr(props.text);
+    }
+    return strNewLineToBr(props.text.replace(props.enteredRegex, replaceValue));
+  }
+
   function replaceInputHandler(event: React.ChangeEvent<HTMLInputElement>) {
     setReplaceValue(event.target.value);
   }
@@ -24,11 +31,7 @@ const ReplaceSection = (props: ReplaceSectionProps) => {
         </div>
         <div>
           <h3>Current Output</h3>
-          <p className="monospace">
-            {strNewLineToBr(
-              props.text.replace(props.enteredRegex, replaceValue)
-            )}
-          </p>
+          <p className="monospace">{getCurrentOutput()}</p>
         </div>
       </div>
     </div>
