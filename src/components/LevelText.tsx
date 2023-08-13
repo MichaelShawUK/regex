@@ -1,7 +1,7 @@
 const LevelText = ({ children }: { children: (string | JSX.Element)[] }) => {
   return (
     <div className="level-text">
-      <p>{children}</p>
+      <p className="monospace">{children}</p>
     </div>
   );
 };

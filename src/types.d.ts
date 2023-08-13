@@ -16,3 +16,9 @@ export interface BaseLevelWithGetters extends BaseLevel {
 export interface LevelTemplateProps {
   levelData: FindLevel | ReplaceLevel;
 }
+
+export interface ReplaceSectionProps {
+  reference: string;
+  text: string;
+  enteredRegex: RegExp;
+}

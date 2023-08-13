@@ -8,6 +8,10 @@ a {
   text-decoration: inherit;
 }
 
+.monospace {
+  font-family: "Courier New", Courier, monospace;
+}
+
 /* h1 {
   text-align: center;
 }

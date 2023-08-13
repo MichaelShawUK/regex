@@ -1,0 +1,10 @@
+.replace-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;;
+  .output-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
