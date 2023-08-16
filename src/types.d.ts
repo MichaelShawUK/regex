@@ -14,7 +14,7 @@ export interface BaseLevelWithGetters extends BaseLevel {
 }
 
 export interface LevelTemplateProps {
-  levelData: FindLevel | ReplaceLevel;
+  levelData: BaseLevelWithGetters;
 }
 
 export interface ReplaceSectionProps {

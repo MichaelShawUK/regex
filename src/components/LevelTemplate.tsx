@@ -2,13 +2,14 @@ import LevelText from "./LevelText";
 import ReplaceSection from "./ReplaceSection";
 import insertSpanTags from "../utils/insertSpanTags";
 import getRegexPositions from "../utils/getRegexPositions";
+import isCorrect from "../utils/isCorrect";
 import { useState } from "react";
 import { LevelTemplateProps } from "../types";
 
 const LevelTemplate = ({ levelData }: LevelTemplateProps) => {
   const [highlightedText, setHighlightedText] = useState(levelData.initialJsx);
   const [enteredRegex, setEnteredRegex] = useState(new RegExp("", "g"));
-  const isReplaceLevel = levelData.type === "replace";
+  const isReplaceLevel = typeof levelData.reference === "string";
 
   function regexInputHandler(event: React.ChangeEvent<HTMLInputElement>) {
     const input = event.target.value;
@@ -21,6 +22,7 @@ const LevelTemplate = ({ levelData }: LevelTemplateProps) => {
 
     try {
       const regex = new RegExp(input, "g");
+      console.log(isCorrect(levelData.text, levelData.matches, regex));
       const regexPositions = getRegexPositions(levelData.text, regex);
       setEnteredRegex(regex);
       setHighlightedText(
