@@ -1,68 +1,33 @@
 import LevelText from "./LevelText";
-import ReplaceSection from "./ReplaceSection";
 import insertSpanTags from "../utils/insertSpanTags";
 import strNewLineToBr from "../utils/strNewLineToBr";
 import getRegexPositions from "../utils/getRegexPositions";
-// import isCorrect from "../utils/isCorrect";
 import { useState } from "react";
 import { LevelTemplateProps } from "../types";
 
 const LevelTemplate = ({ levelData }: LevelTemplateProps) => {
-  // const [highlightedText, setHighlightedText] = useState(levelData.initialJsx);
-  // const [enteredRegex, setEnteredRegex] = useState(new RegExp("", "g"));
-
   const [userInput, setUserInput] = useState({
     regex: new RegExp(/^$/, "g"),
     replacement: "",
   });
 
-  // const [currentOutput, setCurrentOutput] = useState(levelData.text);
-
-  function replaceInputHandler(event: React.ChangeEvent<HTMLInputElement>) {
-    setUserInput((prev) => {
-      return { ...prev, replacement: event.target.value };
-    });
+  function replacementInputHandler(event: React.ChangeEvent<HTMLInputElement>) {
+    setUserInput((prev) => ({ ...prev, replacement: event.target.value }));
   }
-
-  const isReplaceLevel = typeof levelData.reference === "string";
-  // const isCorrectRegex = isCorrect(
-  //   levelData.text,
-  //   levelData.matches,
-  //   enteredRegex
-  // );
 
   function regexInputHandler(event: React.ChangeEvent<HTMLInputElement>) {
     const input = event.target.value;
 
-    if (!input) {
-      // setHighlightedText(levelData.initialJsx);
-      // setEnteredRegex(new RegExp("", "g"));
-      setUserInput((prev) => {
-        return { ...prev, regex: new RegExp(/^$/, "g") };
-      });
-      return;
-    }
-
     try {
-      // const regex = new RegExp(input, "g");
-      // const regexPositions = getRegexPositions(levelData.text, regex);
-      // setEnteredRegex(regex);
-      // setHighlightedText(
-      //   insertSpanTags(levelData.text, regexPositions, levelData.matchPositions)
-      // );
+      if (!input) throw "No input";
       const regex = new RegExp(input, "g");
-      setUserInput((prev) => {
-        return { ...prev, regex: regex };
-      });
+      setUserInput((prev) => ({ ...prev, regex }));
     } catch {
-      // setHighlightedText(levelData.initialJsx);
-      // setEnteredRegex(new RegExp("", "g"));
-      setUserInput((prev) => {
-        return { ...prev, regex: new RegExp(/^$/, "g") };
-      });
+      setUserInput((prev) => ({ ...prev, regex: new RegExp(/^$/, "g") }));
     }
   }
 
+  const isReplaceLevel = typeof levelData.reference === "string";
   const regexPositions = getRegexPositions(levelData.text, userInput.regex);
   const highlightedText = insertSpanTags(
     levelData.text,
@@ -74,6 +39,8 @@ const LevelTemplate = ({ levelData }: LevelTemplateProps) => {
     userInput.regex,
     userInput.replacement
   );
+
+  const isCorrect = levelData.reference === currentOutput;
 
   return (
     <div className="level-template">
@@ -90,7 +57,7 @@ const LevelTemplate = ({ levelData }: LevelTemplateProps) => {
             type="text"
             placeholder="Replace with..."
             className="monospace"
-            onChange={replaceInputHandler}
+            onChange={replacementInputHandler}
           ></input>
           <div className="output-section">
             <div>
@@ -101,7 +68,7 @@ const LevelTemplate = ({ levelData }: LevelTemplateProps) => {
               <h3>Current Output</h3>
               <p
                 className="monospace"
-                // style={{ color: isCorrect ? "green" : "red" }}
+                style={{ color: isCorrect ? "green" : "red" }}
               >
                 {strNewLineToBr(currentOutput)}
               </p>
