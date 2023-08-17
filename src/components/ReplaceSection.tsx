@@ -3,17 +3,24 @@ import { ReplaceSectionProps } from "../types";
 import { useState } from "react";
 
 const ReplaceSection = (props: ReplaceSectionProps) => {
-  const [replaceValue, setReplaceValue] = useState("");
+  const [currentOutput, setCurrentOutput] = useState(props.text);
 
-  function getCurrentOutput() {
-    if (props.enteredRegex.toString() === "/(?:)/g") {
-      return strNewLineToBr(props.text);
-    }
-    return strNewLineToBr(props.text.replace(props.enteredRegex, replaceValue));
+  function outputsMatch(desiredOutput: string, currentOutput: string): boolean {
+    if (desiredOutput === currentOutput) return true;
+    return false;
   }
 
+  const isCorrect =
+    outputsMatch(props.reference, currentOutput) && props.isCorrectRegex;
+
   function replaceInputHandler(event: React.ChangeEvent<HTMLInputElement>) {
-    setReplaceValue(event.target.value);
+    if (props.enteredRegex.toString() === "/(?:)/g") {
+      setCurrentOutput(props.text);
+    } else {
+      setCurrentOutput(
+        props.text.replace(props.enteredRegex, event.target.value)
+      );
+    }
   }
 
   return (
@@ -31,7 +38,12 @@ const ReplaceSection = (props: ReplaceSectionProps) => {
         </div>
         <div>
           <h3>Current Output</h3>
-          <p className="monospace">{getCurrentOutput()}</p>
+          <p
+            className="monospace"
+            style={{ color: isCorrect ? "green" : "red" }}
+          >
+            {strNewLineToBr(currentOutput)}
+          </p>
         </div>
       </div>
     </div>

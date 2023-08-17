@@ -21,4 +21,5 @@ export interface ReplaceSectionProps {
   reference: string;
   text: string;
   enteredRegex: RegExp;
+  isCorrectRegex: boolean;
 }
