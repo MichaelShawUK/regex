@@ -12,7 +12,7 @@ const LevelTemplate = ({ levelData }: LevelTemplateProps) => {
   // const [enteredRegex, setEnteredRegex] = useState(new RegExp("", "g"));
 
   const [userInput, setUserInput] = useState({
-    regex: new RegExp("", "g"),
+    regex: new RegExp(/^$/, "g"),
     replacement: "",
   });
 
@@ -38,7 +38,7 @@ const LevelTemplate = ({ levelData }: LevelTemplateProps) => {
       // setHighlightedText(levelData.initialJsx);
       // setEnteredRegex(new RegExp("", "g"));
       setUserInput((prev) => {
-        return { ...prev, regex: new RegExp("", "g") };
+        return { ...prev, regex: new RegExp(/^$/, "g") };
       });
       return;
     }
@@ -58,12 +58,10 @@ const LevelTemplate = ({ levelData }: LevelTemplateProps) => {
       // setHighlightedText(levelData.initialJsx);
       // setEnteredRegex(new RegExp("", "g"));
       setUserInput((prev) => {
-        return { ...prev, regex: new RegExp("", "g") };
+        return { ...prev, regex: new RegExp(/^$/, "g") };
       });
     }
   }
-
-  console.log(userInput.regex);
 
   const regexPositions = getRegexPositions(levelData.text, userInput.regex);
   const highlightedText = insertSpanTags(

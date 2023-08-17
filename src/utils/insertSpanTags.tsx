@@ -17,8 +17,10 @@ export default function insertSpanTags(
 
   let eolAnchor: JSX.Element | null = null;
 
-  if (lastRegex[0][0] === text.length && lastRegex[0][1] === text.length) {
-    eolAnchor = <span className="highlight anchor" key={uuidv4()}></span>;
+  if (lastRegex) {
+    if (lastRegex[0][0] === text.length && lastRegex[0][1] === text.length) {
+      eolAnchor = <span className="highlight anchor" key={uuidv4()}></span>;
+    }
   }
 
   while (currentIndex < text.length) {
