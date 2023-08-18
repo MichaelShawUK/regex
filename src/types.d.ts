@@ -2,7 +2,7 @@ import { ChangeEventHandler } from "react";
 
 export interface BaseLevel {
   type: "find" | "replace";
-  instructions: string;
+  instructions: string[];
   template: string;
   matches: string[];
   replacements?: string[];

@@ -7,8 +7,26 @@ import { BaseLevel, BaseLevelWithGetters } from "../types";
 const templateData: Array<BaseLevel> = [
   {
     type: "find",
-    instructions:
+    instructions: [
+      "Regular expressions are extremely useful for processing text. Some of their many uses include extracting relevant data from a large dataset, validating user input, searching and replacing.",
+      "The syntax for regular expressions can be intimidating and so this interactive tutorial aims to break down the various elements that make up a regular expression pattern.",
+    ],
+    matches: ["number", "number", "number"],
+    template: dedent`key: string;
+                     keyCode: SW@P; 
+                     locale: string;
+                     location: SW@P;
+                     metaKey: boolean;
+                     repeat: boolean;
+                     shiftKey: boolean;
+                     which: SW@P;
+    `,
+  },
+  {
+    type: "find",
+    instructions: [
       "UK mobile phone numbers are made up of 11 digits and begin with 07xxx xxxxxx. For international calls the first zero is replaced with +44. Find a regular expression that matches the different formats a UK mobile phone number can take.",
+    ],
     matches: [
       "07123456789",
       "07123 456789",
@@ -27,7 +45,7 @@ const templateData: Array<BaseLevel> = [
   },
   {
     type: "find",
-    instructions: "Find all hex colour values",
+    instructions: ["Find all hex colour values"],
     matches: ["#efefef", "#ff0", "#9a4c12"],
     template: dedent`color: red;
                      background-color: SW@P;
@@ -37,7 +55,7 @@ const templateData: Array<BaseLevel> = [
   },
   {
     type: "find",
-    instructions: "Find all products IDs in this order",
+    instructions: ["Find all products IDs in this order"],
     matches: ["sku235av", "sku190wa", "sku883fl"],
     template: dedent`Order Summary:
                      Name: ReactJS
@@ -57,8 +75,9 @@ const templateData: Array<BaseLevel> = [
   },
   {
     type: "replace",
-    instructions:
+    instructions: [
       "The last argument to the rgba function sets the alpha channel, with 0 being fully transparent and 1 being fully opaque. Set all RGBA colours to fully opaque.",
+    ],
     matches: ["0.3", "0.5"],
     template: dedent`font-size: 12px;
                      line-height: 0.8;
