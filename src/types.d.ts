@@ -1,3 +1,5 @@
+import { ChangeEventHandler } from "react";
+
 export interface BaseLevel {
   type: "find" | "replace";
   instructions: string;
@@ -18,8 +20,7 @@ export interface LevelTemplateProps {
 }
 
 export interface ReplaceSectionProps {
-  reference: string;
-  text: string;
-  enteredRegex: RegExp;
-  isCorrectRegex: boolean;
+  desiredOutput: string;
+  currentOutput: string;
+  onReplaceInput: ChangeEventHandler<HTMLInputElement>;
 }
