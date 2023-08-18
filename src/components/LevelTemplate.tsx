@@ -1,11 +1,10 @@
 import LevelText from "./LevelText";
-import insertSpanTags from "../utils/insertSpanTags";
 import strNewLineToBr from "../utils/strNewLineToBr";
-import getRegexPositions from "../utils/getRegexPositions";
 import { useState } from "react";
 import { LevelTemplateProps } from "../types";
+import getHighlightedText from "../utils/getHighlightedText";
 
-const LevelTemplate = ({ levelData }: LevelTemplateProps) => {
+const LevelTemplate = ({ templateData }: LevelTemplateProps) => {
   const [userInput, setUserInput] = useState({
     regex: new RegExp(/^$/, "g"),
     replacement: "",
@@ -27,24 +26,23 @@ const LevelTemplate = ({ levelData }: LevelTemplateProps) => {
     }
   }
 
-  const isReplaceLevel = typeof levelData.reference === "string";
-  const regexPositions = getRegexPositions(levelData.text, userInput.regex);
-  const highlightedText = insertSpanTags(
-    levelData.text,
-    regexPositions,
-    levelData.matchPositions
+  const highlightedText = getHighlightedText(
+    templateData.text,
+    templateData.matchPositions,
+    userInput.regex
   );
 
-  const currentOutput = levelData.text.replace(
+  const currentOutput = templateData.text.replace(
     userInput.regex,
     userInput.replacement
   );
 
-  const isCorrect = levelData.reference === currentOutput;
+  const isReplaceLevel = typeof templateData.reference === "string";
+  const isCorrect = templateData.reference === currentOutput;
 
   return (
     <div className="level-template">
-      <div className="instructions">{levelData.instructions}</div>
+      <div className="instructions">{templateData.instructions}</div>
       <input
         type="text"
         onChange={(e) => regexInputHandler(e)}
@@ -62,7 +60,9 @@ const LevelTemplate = ({ levelData }: LevelTemplateProps) => {
           <div className="output-section">
             <div>
               <h3>Desired Output</h3>
-              <p className="monospace">{strNewLineToBr(levelData.reference)}</p>
+              <p className="monospace">
+                {strNewLineToBr(templateData.reference)}
+              </p>
             </div>
             <div>
               <h3>Current Output</h3>

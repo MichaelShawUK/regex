@@ -4,7 +4,7 @@ import getMatchPositions from "../utils/getMatchPositions";
 import highlightMatches from "../utils/highlightMatches";
 import { BaseLevel, BaseLevelWithGetters } from "../types";
 
-const levelData: Array<BaseLevel> = [
+const templateData: Array<BaseLevel> = [
   {
     type: "find",
     instructions:
@@ -69,7 +69,7 @@ const levelData: Array<BaseLevel> = [
   },
 ];
 
-const levelDataWithGetters: Array<BaseLevelWithGetters> = levelData.map(
+const templateDataWithGetters: Array<BaseLevelWithGetters> = templateData.map(
   (level) => {
     const text = insertMatches(level.template, level.matches);
     const matchPositions = getMatchPositions(text, level.matches);
@@ -100,4 +100,4 @@ const levelDataWithGetters: Array<BaseLevelWithGetters> = levelData.map(
   }
 );
 
-export default levelDataWithGetters;
+export default templateDataWithGetters;
