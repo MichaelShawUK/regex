@@ -12,6 +12,7 @@ const ReplaceSection = (props: ReplaceSectionProps) => {
         placeholder="Replace with..."
         className="monospace"
         onChange={props.onReplaceInput}
+        style={{ backgroundColor: isCorrect ? "#87c787" : "white" }}
       ></input>
       <div className="output-section">
         <div>
@@ -22,7 +23,7 @@ const ReplaceSection = (props: ReplaceSectionProps) => {
           <h3>Current Output</h3>
           <p
             className="monospace"
-            style={{ color: isCorrect ? "green" : "red" }}
+            style={{ color: isCorrect ? "#87c787" : "#ce9090" }}
           >
             {strNewLineToBr(props.currentOutput)}
           </p>

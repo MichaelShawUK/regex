@@ -3,6 +3,7 @@ import ReplaceSection from "./ReplaceSection";
 import { useState } from "react";
 import { LevelTemplateProps } from "../types";
 import getHighlightedText from "../utils/getHighlightedText";
+import allMatchesFound from "../utils/allMatchesFound";
 
 const LevelTemplate = ({ templateData }: LevelTemplateProps) => {
   const [userInput, setUserInput] = useState({
@@ -37,6 +38,11 @@ const LevelTemplate = ({ templateData }: LevelTemplateProps) => {
     userInput.replacement
   );
 
+  const isCorrect = allMatchesFound(
+    templateData.text,
+    templateData.matches,
+    userInput.regex
+  );
   const isReplaceLevel = typeof templateData.reference === "string";
 
   return (
@@ -46,6 +52,7 @@ const LevelTemplate = ({ templateData }: LevelTemplateProps) => {
         type="text"
         onChange={(e) => regexInputHandler(e)}
         className="monospace"
+        style={{ backgroundColor: isCorrect ? "#87c787" : "white" }}
       ></input>
       <LevelText>{highlightedText}</LevelText>
       {isReplaceLevel && (
