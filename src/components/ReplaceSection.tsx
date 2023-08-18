@@ -22,7 +22,7 @@ const ReplaceSection = (props: ReplaceSectionProps) => {
         <div>
           <h3>Current Output</h3>
           <p
-            className="monospace"
+            className="monospace current-output"
             style={{ color: isCorrect ? "#87c787" : "#ce9090" }}
           >
             {strNewLineToBr(props.currentOutput)}

@@ -63,3 +63,6 @@
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
 }
+.replace-section .current-output {
+  word-break: break-all;
+}

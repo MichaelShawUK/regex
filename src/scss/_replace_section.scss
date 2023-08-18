@@ -7,4 +7,8 @@
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
   }
+  
+  .current-output {
+    word-break: break-all;
+  }
 }
