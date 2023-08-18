@@ -20,7 +20,7 @@ const LevelTemplate = ({ templateData }: LevelTemplateProps) => {
 
     try {
       if (!input) throw "No input";
-      const regex = new RegExp(input, "g");
+      const regex = new RegExp(input, "gm");
       setUserInput((prev) => ({ ...prev, regex }));
     } catch {
       setUserInput((prev) => ({ ...prev, regex: new RegExp(/^$/, "g") }));

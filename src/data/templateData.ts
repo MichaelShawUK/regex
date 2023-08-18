@@ -8,18 +8,49 @@ const templateData: Array<BaseLevel> = [
   {
     type: "find",
     instructions: [
-      "Regular expressions are extremely useful for processing text. Some of their many uses include extracting relevant data from a large dataset, validating user input, searching and replacing.",
+      "Regular expressions are extremely useful for processing text. Some of their uses include extracting information from large datasets, validating user input, searching and replacing data among many others.",
       "The syntax for regular expressions can be intimidating and so this interactive tutorial aims to break down the various elements that make up a regular expression pattern.",
+      "Enter your pattern to match the string highlighted in blue. To get started enter 'location'.",
     ],
-    matches: ["number", "number", "number"],
+    matches: ["location"],
     template: dedent`key: string;
-                     keyCode: SW@P; 
+                     keyCode: number; 
                      locale: string;
-                     location: SW@P;
+                     location: number;
                      metaKey: boolean;
                      repeat: boolean;
                      shiftKey: boolean;
-                     which: SW@P;
+                     which: number;
+    `,
+  },
+  {
+    type: "find",
+    instructions: [
+      "Entering the exact string is not particularly useful. You can use special characters in your pattern to match certain data.",
+      "To match all digits 0-9 use the \\d character.",
+      "The \\d character is a shorthand convenience for the pattern [0-9]. These can be used interchangably, try both \\d and [0-9].",
+    ],
+    matches: ["3", "2", "7"],
+    template: dedent`id: e3,
+                     name: widget,
+                     quanity: 2,
+                     location: UK,
+                     price: 7
+    `,
+  },
+  {
+    type: "find",
+    instructions: [
+      "Similarly, you can use the \\w character to match any character that is a letter or number. This is equivalent to the range [0-9a-zA-Z].",
+      "If you enter \\w twice in your pattern it will match any substring where an alphanumeric character is followed by a second alphanumberic character.",
+      "You can combine characters in your pattern, use the \\d and \\w characters to match the id.",
+    ],
+    matches: ["e3"],
+    template: dedent`id: e3,
+                     name: widget,
+                     quanity: 2,
+                     location: UK,
+                     price: 7
     `,
   },
   {
