@@ -8,7 +8,7 @@ const templateData: Array<BaseLevel> = [
   {
     type: "find",
     instructions: [
-      "Regular expressions are extremely useful for processing text. Some of their uses include extracting information from large datasets, validating user input, searching and replacing data among many others.",
+      "Regular expressions are extremely useful for processing text. Some of their uses include extracting information from large datasets, validating user input, finding and replacing data among many other uses.",
       "The syntax for regular expressions can be intimidating and so this interactive tutorial aims to break down the various elements that make up a regular expression pattern.",
       "Enter your pattern to match the string highlighted in blue. To get started enter 'location'.",
     ],
@@ -51,6 +51,22 @@ const templateData: Array<BaseLevel> = [
                      quanity: 2,
                      location: UK,
                      price: 7
+    `,
+  },
+  {
+    type: "find",
+    instructions: [
+      "If you wanted to search for a 4-digit number you could use the pattern \\d\\d\\d\\d, but it is more convenient to use a quantifier.",
+      "You can specify how many instances of the previous character you want to search for using curly braces.",
+      "For example, to find all 4-digit numbers use the pattern \\d{4}",
+    ],
+    matches: ["2007", "2000", "1986", "1976", "1972"],
+    template: dedent`Year - Oscar Winner
+                     SW@P - No Country for Old Men
+                     SW@P - Gladiator
+                     SW@P - Platoon
+                     SW@P - Rocky
+                     SW@P - The Godfather
     `,
   },
   {
@@ -120,13 +136,13 @@ const templateData: Array<BaseLevel> = [
 ];
 
 const templateDataWithGetters: Array<BaseLevelWithGetters> = templateData.map(
-  (level) => {
-    const text = insertMatches(level.template, level.matches);
-    const matchPositions = getMatchPositions(text, level.matches);
+  (data) => {
+    const text = insertMatches(data.template, data.matches);
+    const matchPositions = getMatchPositions(text, data.matches);
     const initialJsx = highlightMatches(text, [...matchPositions.keys()]);
 
-    const levelObj = {
-      ...level,
+    const dataObj = {
+      ...data,
       get text() {
         return text;
       },
@@ -138,11 +154,11 @@ const templateDataWithGetters: Array<BaseLevelWithGetters> = templateData.map(
       },
     };
 
-    if (!level.replacements) return levelObj;
+    if (!data.replacements) return dataObj;
 
-    const reference = insertMatches(level.template, level.replacements);
+    const reference = insertMatches(data.template, data.replacements);
     return {
-      ...levelObj,
+      ...dataObj,
       get reference() {
         return reference;
       },
