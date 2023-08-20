@@ -45,13 +45,13 @@ const LevelTemplate = ({ templateData }: LevelTemplateProps) => {
   );
   const isReplaceLevel = typeof templateData.reference === "string";
 
+  const instructions = templateData.instructions.map((paragraph, index) => (
+    <p key={index}>{paragraph}</p>
+  ));
+
   return (
     <div className="level-template">
-      <div className="instructions">
-        {templateData.instructions.map((paragraph, index) => (
-          <p key={index}>{paragraph}</p>
-        ))}
-      </div>
+      <div className="instructions">{instructions}</div>
       <input
         type="text"
         onChange={(e) => regexInputHandler(e)}
