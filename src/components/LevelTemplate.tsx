@@ -1,4 +1,5 @@
 import LevelText from "./LevelText";
+import Instructions from "./Instructions";
 import ReplaceSection from "./ReplaceSection";
 import { useState } from "react";
 import { LevelTemplateProps } from "../types";
@@ -45,13 +46,9 @@ const LevelTemplate = ({ templateData }: LevelTemplateProps) => {
   );
   const isReplaceLevel = typeof templateData.reference === "string";
 
-  const instructions = templateData.instructions.map((paragraph, index) => (
-    <p key={index}>{paragraph}</p>
-  ));
-
   return (
     <div className="level-template">
-      <div className="instructions">{instructions}</div>
+      <Instructions data={templateData.instructions} />
       <input
         type="text"
         onChange={(e) => regexInputHandler(e)}
