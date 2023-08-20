@@ -3,7 +3,6 @@ import Instructions from "./Instructions";
 import ReplaceSection from "./ReplaceSection";
 import { useState } from "react";
 import { LevelTemplateProps } from "../types";
-import getHighlightedText from "../utils/getHighlightedText";
 import allMatchesFound from "../utils/allMatchesFound";
 
 const LevelTemplate = ({ templateData }: LevelTemplateProps) => {
@@ -28,12 +27,6 @@ const LevelTemplate = ({ templateData }: LevelTemplateProps) => {
     }
   }
 
-  const highlightedText = getHighlightedText(
-    templateData.text,
-    templateData.matchPositions,
-    userInput.regex
-  );
-
   const currentOutput = templateData.text.replace(
     userInput.regex,
     userInput.replacement
@@ -55,7 +48,11 @@ const LevelTemplate = ({ templateData }: LevelTemplateProps) => {
         className="monospace"
         style={{ backgroundColor: isCorrect ? "#87c787" : "white" }}
       ></input>
-      <LevelText>{highlightedText}</LevelText>
+      <LevelText
+        text={templateData.text}
+        regex={userInput.regex}
+        matchPositions={templateData.matchPositions}
+      />
       {isReplaceLevel && (
         <ReplaceSection
           desiredOutput={templateData.reference}

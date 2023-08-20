@@ -24,3 +24,9 @@ export interface ReplaceSectionProps {
   currentOutput: string;
   onReplaceInput: ChangeEventHandler<HTMLInputElement>;
 }
+
+export interface LevelTextProps {
+  text: string;
+  regex: RegExp;
+  matchPositions: Map<number[], string>;
+}
