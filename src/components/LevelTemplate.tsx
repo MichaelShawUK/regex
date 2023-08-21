@@ -27,11 +27,6 @@ const LevelTemplate = ({ templateData }: LevelTemplateProps) => {
     }
   }
 
-  const currentOutput = templateData.text.replace(
-    userInput.regex,
-    userInput.replacement
-  );
-
   const isCorrect = allMatchesFound(
     templateData.text,
     templateData.matches,
@@ -55,8 +50,9 @@ const LevelTemplate = ({ templateData }: LevelTemplateProps) => {
       />
       {isReplaceLevel && (
         <ReplaceSection
+          text={templateData.text}
           desiredOutput={templateData.reference}
-          currentOutput={currentOutput}
+          userInput={userInput}
           onReplaceInput={replacementInputHandler}
         />
       )}

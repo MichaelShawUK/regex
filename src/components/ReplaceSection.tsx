@@ -3,7 +3,11 @@ import outputsMatch from "../utils/outputsMatch";
 import { ReplaceSectionProps } from "../types";
 
 const ReplaceSection = (props: ReplaceSectionProps) => {
-  const isCorrect = outputsMatch(props.desiredOutput, props.currentOutput);
+  const currentOutput = props.text.replace(
+    props.userInput.regex,
+    props.userInput.replacement
+  );
+  const isCorrect = outputsMatch(props.desiredOutput, currentOutput);
 
   return (
     <div className="replace-section">
@@ -25,7 +29,7 @@ const ReplaceSection = (props: ReplaceSectionProps) => {
             className="monospace current-output"
             style={{ color: isCorrect ? "#87c787" : "#ce9090" }}
           >
-            {strNewLineToBr(props.currentOutput)}
+            {strNewLineToBr(currentOutput)}
           </p>
         </div>
       </div>

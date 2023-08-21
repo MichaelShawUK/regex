@@ -20,8 +20,9 @@ export interface LevelTemplateProps {
 }
 
 export interface ReplaceSectionProps {
+  text: string;
   desiredOutput: string;
-  currentOutput: string;
+  userInput: { regex: RegExp; replacement: string };
   onReplaceInput: ChangeEventHandler<HTMLInputElement>;
 }
 
