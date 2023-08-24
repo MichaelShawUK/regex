@@ -6,7 +6,7 @@ const LevelText = ({ text, matchPositions, regex }: LevelTextProps) => {
 
   return (
     <div className="level-text">
-      <p className="monospace">{highlightedText}</p>
+      <pre className="monospace">{highlightedText}</pre>
     </div>
   );
 };
