@@ -27,8 +27,6 @@
 }
 
 .highlight {
-  padding: 0 2px;
-  margin: 0 1px;
   border-radius: 2px;
   color: black;
 }
@@ -51,6 +49,11 @@
 .anchor {
   background-color: rgb(206, 202, 144);
   outline: 2px solid yellow;
+}
+
+.anchor::before {
+  content: "";
+  padding: 0 2px;
 }
 
 .replace-section {

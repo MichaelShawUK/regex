@@ -43,14 +43,14 @@ const templateData: Array<BaseLevel> = [
     instructions: [
       "Similarly, you can use the \\w character to match any character that is a letter or number. This is equivalent to the range [0-9a-zA-Z].",
       "If you enter \\w twice in your pattern it will match any substring where an alphanumeric character is followed by a second alphanumberic character.",
-      "You can combine characters in your pattern, use the \\d and \\w characters to match the id.",
+      "You can combine characters in your pattern, use the \\d and \\w characters to match the product ids.",
     ],
-    matches: ["e3"],
-    template: dedent`id: e3,
-                     name: widget,
-                     quanity: 2,
-                     location: UK,
-                     price: 7
+    matches: ["i7", "d4"],
+    template: dedent`id: i7,            id: d4,
+                     name: MacBook,     name: Inspiron,
+                     quanity: 1,        quanity: 2,
+                     brand: Apple,      brand: Dell,
+                     price: 849         price: 649
     `,
   },
   {
@@ -67,6 +67,27 @@ const templateData: Array<BaseLevel> = [
                      SW@P - Platoon
                      SW@P - Rocky
                      SW@P - The Godfather
+    `,
+  },
+  {
+    type: "find",
+    instructions: [
+      "Sometimes you want to find the previous character at least n times but no more than m times.",
+      "In this scenario you would use the quantifier {n, m}.",
+      "Find the countries whose population is greater than 1 million but less than 100 million.",
+    ],
+    matches: ["36684202", "18190484", "5056935", "58870762", "85816199"],
+    template: dedent`Country      Population
+                     Angola       SW@P
+                     Brazil       216422446
+                     China        1425671352
+                     Ecuador      SW@P
+                     Fiji         936375
+                     Iceland      375318
+                     Ireland      SW@P
+                     Italy        SW@P
+                     Mexico       128455567
+                     Turkey       SW@P
     `,
   },
   {
