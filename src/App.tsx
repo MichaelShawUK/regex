@@ -21,9 +21,15 @@ function App() {
     <>
       <LevelTemplate key={level} templateData={templateData[level]} />
       {isPrevLevel && (
-        <button onClick={prevClickHandler}>Previous Level</button>
+        <button onClick={prevClickHandler} className="prev btn">
+          Prev
+        </button>
       )}
-      {isNextLevel && <button onClick={nextClickHandler}>Next Level</button>}
+      {isNextLevel && (
+        <button onClick={nextClickHandler} className="next btn">
+          Next
+        </button>
+      )}
     </>
   );
 }
