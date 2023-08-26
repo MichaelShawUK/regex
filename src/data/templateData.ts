@@ -7,6 +7,16 @@ import { BaseLevel, BaseLevelWithGetters } from "../types";
 const templateData: Array<BaseLevel> = [
   {
     type: "find",
+    instructions: ["Highlight text for duplicate matches"],
+    matches: ["apple", "banana", "apple", "cherry"],
+    template: dedent`Find the fruits:
+                     SW@P
+                     SW@P
+                     SW@P
+                     SW@P`,
+  },
+  {
+    type: "find",
     instructions: [
       "Regular expressions are extremely useful for processing text. Some of their uses include extracting information from large datasets, validating user input, finding and replacing data among many other uses.",
       "The syntax for regular expressions can be intimidating and so this interactive tutorial aims to break down the various elements that make up a regular expression pattern.",
