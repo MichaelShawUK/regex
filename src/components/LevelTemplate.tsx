@@ -27,11 +27,12 @@ const LevelTemplate = ({ templateData }: LevelTemplateProps) => {
     }
   }
 
-  const isCorrect = allMatchesFound(
-    templateData.text,
-    templateData.matches,
-    userInput.regex
-  );
+  const inputClasses = `monospace ${
+    allMatchesFound(templateData.text, templateData.matches, userInput.regex)
+      ? "correct-input"
+      : ""
+  }`;
+
   const isReplaceLevel = typeof templateData.reference === "string";
 
   return (
@@ -40,8 +41,7 @@ const LevelTemplate = ({ templateData }: LevelTemplateProps) => {
       <input
         type="text"
         onChange={(e) => regexInputHandler(e)}
-        className="monospace"
-        style={{ backgroundColor: isCorrect ? "#87c787" : "white" }}
+        className={inputClasses}
       ></input>
       <LevelText
         text={templateData.text}
