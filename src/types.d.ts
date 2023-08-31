@@ -19,6 +19,13 @@ export interface LevelTemplateProps {
   templateData: BaseLevelWithGetters;
 }
 
+export interface LevelButtonsProps {
+  level: number;
+  maxLevel: number;
+  onPrevLevel: () => void;
+  onNextLevel: () => void;
+}
+
 export interface ReplaceSectionProps {
   text: string;
   desiredOutput: string;
