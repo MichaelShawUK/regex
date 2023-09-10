@@ -8,12 +8,12 @@ const LevelButtons = (props: LevelButtonsProps) => {
     <>
       {hasPrevLevel && (
         <button onClick={props.onPrevLevel} className="prev btn">
-          Prev
+          &lt;
         </button>
       )}
       {hasNextLevel && (
         <button onClick={props.onNextLevel} className="next btn">
-          Next
+          &gt;
         </button>
       )}
     </>

@@ -57,10 +57,10 @@ const templateData: Array<BaseLevel> = [
     ],
     matches: ["i7", "d4"],
     template: dedent`id: i7,            id: d4,
-                     name: MacBook,     name: Inspiron,
+                     name: Widget A,    name: Widget B,
                      quanity: 1,        quanity: 2,
-                     brand: Apple,      brand: Dell,
-                     price: 849         price: 649
+                     brand: Apple,      brand: Banana,
+                     price: 7           price: 5
     `,
   },
   {
@@ -85,6 +85,7 @@ const templateData: Array<BaseLevel> = [
       "Sometimes you want to find the previous character at least n times but no more than m times.",
       "In this scenario you would use the quantifier {n, m}.",
       "Find the countries whose population is greater than 1 million but less than 100 million.",
+      "You will need to use the \\b metacharacter which asserts there is a word boundary - either the beginning or end of a word.",
     ],
     matches: ["36684202", "18190484", "5056935", "58870762", "85816199"],
     template: dedent`Country      Population
