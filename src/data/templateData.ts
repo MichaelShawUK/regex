@@ -40,13 +40,12 @@ const templateData: Array<BaseLevel> = [
       "To match all digits 0-9 use the \\d character.",
       "The \\d character is a shorthand convenience for the pattern [0-9]. These can be used interchangably, try both \\d and [0-9].",
     ],
-    matches: ["3", "2", "7"],
-    template: dedent`id: e3,
-                     name: widget,
-                     quanity: 2,
-                     location: UK,
-                     price: 7
-    `,
+    matches: ["id: 2", "id: 5", "id: 8"],
+    template: dedent`id: 2                 id: 5                id: 8
+                     brand: Lamborghini    brand: Audi          brand: Ferrari
+                     model: Gallardo       model: R8            model: F430
+                     tyres: Michelin       tyres: Bridgestone   tyres: Pirelli
+                     speed: 201 mph        speed: 204 mph       speed: 196 mph`,
   },
   {
     type: "find",
